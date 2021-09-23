@@ -25,7 +25,6 @@ public class ExtractKeywords {
 		int num_if_else_if_else = 0;
 		int num_if_else = 0;
 		int num_keyWords = 0;
-		int count = 0;
 		
 		String []key=  {
 				"auto","double","int","struct","break","else","long","switch","case","enum","register",
@@ -180,9 +179,25 @@ public class ExtractKeywords {
         	}
             System.out.println("if-else num: "+num_if_else);
         }
-        		
-	
-        	
-       
-}
+        
+        
+        //Level 4:count the number of if-else if-else structure
+        if(comp_level == level[3]) {
+        	 for(int i=0;i<s1.length;i++) {
+        		 if(i < s1.length - 1) {
+        			 if(s1[i].equals("else")&&!s1[i+1].equals("if")) {
+        				 num_else ++;
+                     }
+        		 }
+        		 if(i == s1.length-1) {
+        			 if(s1[i].equals("else")) {
+        				 num_else ++;
+        			 }
+        		 }
+        	 }
+        	 num_if_else_if_else = num_else - num_if_else;
+        	 System.out.println("if -else if- else num: "+num_if_else_if_else);
+        }
+	      
+	}
 }
