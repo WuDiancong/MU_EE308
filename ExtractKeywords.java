@@ -128,8 +128,28 @@ public class ExtractKeywords {
                 System.out.println();  
             }
         }
+        
+        
+        
+        //Level 3:count the number of if-else structure
+        if(comp_level == level[2] || comp_level == level[3]){
+        	for(int i=0;i<s1.length;i++){	
+        		if(i!=0){
+        			if(s1[i].equals("if")&&!s1[i-1].equals("else")){
+        				int init = i + 1;
+                		if(i<s1.length-2){
+                			while((!(s1[i+1].equals("else")&&!s1[i+2].equals("if")))&&i<s1.length-3){
+                    			i++;
+                    		}
+                		}else{
+                			break;
+                		}
+                		System.out.println("if-else num: "+num_if_else);
+        			}
+        		}
 	
-	
+        	}
+        }
 	
 	}
 }
