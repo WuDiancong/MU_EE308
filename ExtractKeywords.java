@@ -107,7 +107,7 @@ public class ExtractKeywords {
             Vector vec_case = new Vector(4);
             int num_case = 0;
             int index = -1;
-            for(int i=0;i<s1.length;i++){
+            for(int i=0;i < s1.length;i++){
             	if(s1[i].equals("switch")){
                      index++;
                      num_case=0;
@@ -122,7 +122,7 @@ public class ExtractKeywords {
             if(num_switch == 0) {
             	System.out.println(0);
             }else {
-				for(int t=0;t<=index;t++){
+				for(int t=0;t <= index;t++){
 					System.out.print(vec_case.get(t)+" ");
 				}
                 System.out.println();  
