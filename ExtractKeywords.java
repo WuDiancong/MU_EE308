@@ -89,10 +89,51 @@ public class ExtractKeywords {
 		            }
 		        }
 		    }
-		    System.out.println("The number of the keyWords are:"+num_keyWords);
+		    System.out.println("total num: " + num_keyWords);     
 		}
-	    
-	    
+        
 		
-    }
+        //Level 2:count the number of keywords switch and cases
+        if(comp_level == level[1] || comp_level == level[2] || comp_level == level[3]) {
+        	int num_switch = 0;
+            for(int i=0;i < s1.length;i++){
+            	if(s1[i].equals("switch")) {
+            		num_switch ++;
+            	}
+            }
+            System.out.println("switch num:  " + num_switch);
+            
+            //count the number of "switch case" structures
+            Vector vec_case = new Vector(4);
+            int num_case = 0;
+            int index = -1;
+            for(int i=0;i<s1.length;i++){
+            	if(s1[i].equals("switch")){
+                     index++;
+                     num_case=0;
+                }
+                if(s1[i].equals("case")){
+                     num_case++;
+                     vec_case.add(index,num_case);
+                }
+            }
+            
+            System.out.print("case num:  ");
+            if(num_switch == 0) {
+            	System.out.println(0);
+            }else {
+				for(int t=0;t<=index;t++){
+					System.out.print(vec_case.get(t)+" ");
+				}
+                System.out.println();  
+            }
+        }
+		
+		
+
+	
+	
+	
+	
+	}
 }
