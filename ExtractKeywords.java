@@ -44,6 +44,40 @@ public class ExtractKeywords {
         }
         inputStream.close();
         bufferedReader.close();
+        
+        //Refactor the code read in
+        String s = str.toString();
+        Pattern pat = Pattern.compile("\"(.*?)\"");
+        Matcher mat = pat.matcher(s);
+        while(mat.find()){
+            s = s.replace(mat.group()," ");
+            pat = Pattern.compile("\"(.*?)\"");
+            mat = pat.matcher(s);
+        }
+        pat = Pattern.compile("/\\**(.*?)/");
+        mat = pat.matcher(s);
+        while(mat.find()){
+            s = s.replace(mat.group()," ");
+            mat = pat.matcher(s);
+        }
+        if(s.isEmpty()){
+        	System.out.println("Wrong Format");
+            System.exit(0);
+        }
+        
+        s=s.replace("["," ");
+        s=s.replace("]"," ");
+        s=s.replace("-","a");
+        s=s.replace("*","a");
+        s=s.replace("/","a");
+        s=s.replace("+","a");
+        s=s.replace(">","a");
+        s=s.replace("=","a");
+        s=s.replace("!","a");
+        s=s.replace(":","a");
+        s=s.replace("\\","a");
+        s= s.replaceAll("[^a-zA-Z]", " ");
+        String []s1=s.split("[  ' ']");
 	    
 	    
 	    
