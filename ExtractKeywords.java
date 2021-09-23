@@ -83,8 +83,8 @@ public class ExtractKeywords {
 		//Level 1:count the number of all the keywords
 		if(comp_level == level[0] || comp_level == level[1] || comp_level == level[2] || comp_level == level[3]) {
 			for(int i=0;i < s1.length;i++){
-		        for(int j=0;j < key.length;j++){
-		            if(s1[i].equals(key[j])){
+		        for(int j=0;j < key.length;j++) {
+		            if(s1[i].equals(key[j])) {
 		            	num_keyWords ++;
 		            }
 		        }
@@ -96,7 +96,7 @@ public class ExtractKeywords {
         //Level 2:count the number of keywords switch and cases
         if(comp_level == level[1] || comp_level == level[2] || comp_level == level[3]) {
         	int num_switch = 0;
-            for(int i=0;i < s1.length;i++){
+            for(int i=0;i < s1.length;i++) {
             	if(s1[i].equals("switch")) {
             		num_switch ++;
             	}
@@ -107,12 +107,12 @@ public class ExtractKeywords {
             Vector vec_case = new Vector(4);
             int num_case = 0;
             int index = -1;
-            for(int i=0;i < s1.length;i++){
-            	if(s1[i].equals("switch")){
+            for(int i=0;i < s1.length;i++) {
+            	if(s1[i].equals("switch")) {
                      index++;
                      num_case=0;
                 }
-                if(s1[i].equals("case")){
+                if(s1[i].equals("case")) {
                      num_case++;
                      vec_case.add(index,num_case);
                 }
@@ -122,7 +122,7 @@ public class ExtractKeywords {
             if(num_switch == 0) {
             	System.out.println(0);
             }else {
-				for(int t=0;t <= index;t++){
+				for(int t=0;t <= index;t++) {
 					System.out.print(vec_case.get(t)+" ");
 				}
                 System.out.println();  
@@ -132,24 +132,57 @@ public class ExtractKeywords {
         
         
         //Level 3:count the number of if-else structure
-        if(comp_level == level[2] || comp_level == level[3]){
-        	for(int i=0;i<s1.length;i++){	
-        		if(i!=0){
-        			if(s1[i].equals("if")&&!s1[i-1].equals("else")){
+        if(comp_level == level[2] || comp_level == level[3]) {
+        	for(int i=0;i<s1.length;i++) {	
+        		if(i!=0) {
+        			if(s1[i].equals("if")&&!s1[i-1].equals("else")) {
         				int init = i + 1;
-                		if(i<s1.length-2){
-                			while((!(s1[i+1].equals("else")&&!s1[i+2].equals("if")))&&i<s1.length-3){
+                		if(i<s1.length-2) {
+                			while((!(s1[i+1].equals("else")&&!s1[i+2].equals("if")))&&i<s1.length-3) {
                     			i++;
                     		}
                 		}else{
                 			break;
                 		}
-                		System.out.println("if-else num: "+num_if_else);
-        			}
-        		}
-	
+                		
+                		
+                		int tmp = i;
+                		boolean flag = false;
+                		boolean flag2 = true;
+                		for(int t = init;t<tmp;t++) {
+                			if(s1[t].equals("if")&&!s1[t-1].equals("else")) {
+                				
+                				for(int k = t;k<tmp;k++) {
+                					if(s1[k].equals("else")) {
+                						flag2 = false;
+                						break;
+                					}
+                				}
+                				
+                				if(flag2) num_if_else ++ ;
+                				flag = true;
+                				break;
+                			}
+                		}
+                		
+                		if(flag) {
+                    		if(i<s1.length-2) {
+                    			while(!(s1[i+1].equals("else")&&!s1[i+2].equals("if"))) {
+                        			i++;
+                        		}
+                    		}else {
+                    			break;
+                    		}
+                    		num_if_else ++;
+                		}
+                	}
+            	}  	
         	}
+            System.out.println("if-else num: "+num_if_else);
         }
+        		
 	
-	}
+        	
+       
+}
 }
