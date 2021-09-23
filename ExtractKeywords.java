@@ -128,10 +128,6 @@ public class ExtractKeywords {
                 System.out.println();  
             }
         }
-		
-		
-
-	
 	
 	
 	
