@@ -79,12 +79,22 @@ public class ExtractKeywords {
 		s= s.replaceAll("[^a-zA-Z]", " ");
 		String []s1=s.split("[  ' ']");
 	    
+		
+		//Level 1:count the number of all the keywords
+        if(comp_level == level[0] || comp_level == level[1] || comp_level == level[2] || comp_level == level[3]) {
+        	for(int i=0;i < s1.length;i++)
+            {
+                for(int j=0;j < key.length;j++){
+                    if(s1[i].equals(key[j])){
+                    	num_keyWords ++;
+                    }
+                }
+            }
+            System.out.println("The number of the keyWords are:"+num_keyWords);
+        }
 	    
 	    
 	    
-
-
-
 		
     }
 }
