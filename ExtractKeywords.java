@@ -15,6 +15,7 @@ public class ExtractKeywords {
 		f_path = sc.next();
 		System.out.println("Please enter the completion level what we want: ");
 		comp_level = sc.nextInt();
+		sc.close();
 		
 		int level[] = {1,2,3,4};
 		String reader;
@@ -25,11 +26,28 @@ public class ExtractKeywords {
 	    int num_if_else = 0;
 	    int num_keyWords = 0;
 	    int count = 0;
-        String []key=  {
+        
+	    String []key=  {
         		"auto","double","int","struct","break","else","long","switch","case","enum","register",
         		"typedef","char","extern","return","union", "const","float","short","unsigned","continue",
         		"for","signed","void","default","goto","sizeof","volatile","do","if","while","static",
         		"elseif"};
+        StringBuilder str =new StringBuilder();
+        while((reader = bufferedReader.readLine()) != null) {
+        	reader = reader.replace(':', ' ');
+            if(reader.matches("(.*)//(.*)")){
+            	String b[] = reader.split("//");
+                str.append(b[0] + " ");
+            }else{
+            	str.append(reader + " ");
+            }
+        }
+        inputStream.close();
+        bufferedReader.close();
+	    
+	    
+	    
+	    
 		
     }
 }
