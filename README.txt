@@ -1,3 +1,10 @@
+=================================================================================
+<ExtractKeywords>
+
+It is a java function to achieve extract keywords of different levels from the C or C++ code files that are read in. 
+
+=================================================================================
+
 EE308FZ Software Engineering 
 
 LAB 2 Individual programing work 
